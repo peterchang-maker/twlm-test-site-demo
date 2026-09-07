@@ -1,0 +1,298 @@
+{
+ "抓取時間": "2026-09-04 07:54",
+ "專案網址": "https://gitlab.example.internal/peterchang/twlm-test-site",
+ "任務清單網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues",
+ "看板網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/boards",
+ "新任務網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/new",
+ "錯誤": null,
+ "任務": [
+  {
+   "iid": 1,
+   "標題": "RC1 binary更新登入口測試",
+   "鍵": "rc1binary更新登入口測試",
+   "狀態": "待測",
+   "輪次": "第1輪",
+   "類型": "基本測試",
+   "負責人": [
+    {
+     "名": "王小明",
+     "帳號": "xiaoming",
+     "頭像": null
+    }
+   ],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/1",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 2,
+   "標題": "RC2 binary更新基本測試",
+   "鍵": "rc2binary更新基本測試",
+   "狀態": "卡住",
+   "輪次": "第1輪",
+   "類型": "基本測試",
+   "負責人": [
+    {
+     "名": "林雅婷",
+     "帳號": "yating",
+     "頭像": null
+    }
+   ],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/2",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 3,
+   "標題": "fix測試(BM商城／其他) 20260826",
+   "鍵": "fix測試bm商城其他20260826",
+   "狀態": "完成",
+   "輪次": "第2輪",
+   "類型": "基本測試",
+   "負責人": [
+    {
+     "名": "陳志豪",
+     "帳號": "zhihao",
+     "頭像": null
+    }
+   ],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/3",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 4,
+   "標題": "送審基本測試",
+   "鍵": "送審基本測試",
+   "狀態": "測試中",
+   "輪次": "第1輪",
+   "類型": "基本測試",
+   "負責人": [
+    {
+     "名": "王小明",
+     "帳號": "xiaoming",
+     "頭像": null
+    }
+   ],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/4",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 5,
+   "標題": "持續與結束_20260826",
+   "鍵": "持續與結束20260826",
+   "狀態": "待測",
+   "輪次": "第1輪",
+   "類型": "基本測試",
+   "負責人": [
+    {
+     "名": "林雅婷",
+     "帳號": "yating",
+     "頭像": null
+    }
+   ],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/5",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 6,
+   "標題": "血盟/伺服器移民_20260826",
+   "鍵": "血盟伺服器移民20260826",
+   "狀態": "待測",
+   "輪次": "第1輪",
+   "類型": "基本測試",
+   "負責人": [],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/6",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 7,
+   "標題": "(台灣提案)活動_哈爾巴斯的回憶_活動網頁",
+   "鍵": "台灣提案活動哈爾巴斯的回憶活動網頁",
+   "狀態": "完成",
+   "輪次": "第2輪",
+   "類型": "活動",
+   "負責人": [
+    {
+     "名": "王小明",
+     "帳號": "xiaoming",
+     "頭像": null
+    }
+   ],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/7",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 8,
+   "標題": "活動_共同_中元節紀念特別Push",
+   "鍵": "活動共同中元節紀念特別push",
+   "狀態": "測試中",
+   "輪次": "第1輪",
+   "類型": "活動",
+   "負責人": [
+    {
+     "名": "林雅婷",
+     "帳號": "yating",
+     "頭像": null
+    }
+   ],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/8",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 9,
+   "標題": "活動_共同_神秘的流浪馬戲團",
+   "鍵": "活動共同神秘的流浪馬戲團",
+   "狀態": "待測",
+   "輪次": "第1輪",
+   "類型": "活動",
+   "負責人": [
+    {
+     "名": "陳志豪",
+     "帳號": "zhihao",
+     "頭像": null
+    }
+   ],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/9",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 10,
+   "標題": "IAP_共同_亞丁城商人的交易品",
+   "鍵": "iap共同亞丁城商人的交易品",
+   "狀態": "卡住",
+   "輪次": "第1輪",
+   "類型": "BM",
+   "負責人": [
+    {
+     "名": "王小明",
+     "帳號": "xiaoming",
+     "頭像": null
+    }
+   ],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/10",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 11,
+   "標題": "IAP_共同_每日支援箱4種",
+   "鍵": "iap共同每日支援箱4種",
+   "狀態": "完成",
+   "輪次": "第2輪",
+   "類型": "BM",
+   "負責人": [
+    {
+     "名": "林雅婷",
+     "帳號": "yating",
+     "頭像": null
+    }
+   ],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/11",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 12,
+   "標題": "IAP_共同_累積購買獎勵",
+   "鍵": "iap共同累積購買獎勵",
+   "狀態": "測試中",
+   "輪次": "第1輪",
+   "類型": "BM",
+   "負責人": [
+    {
+     "名": "陳志豪",
+     "帳號": "zhihao",
+     "頭像": null
+    }
+   ],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/12",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 13,
+   "標題": "BM_常態_共同_世界樹的周間獎勵組合包等3種",
+   "鍵": "bm常態共同世界樹的周間獎勵組合包等3種",
+   "狀態": "待測",
+   "輪次": "第1輪",
+   "類型": "BM",
+   "負責人": [
+    {
+     "名": "王小明",
+     "帳號": "xiaoming",
+     "頭像": null
+    }
+   ],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/13",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 14,
+   "標題": "BM_月底_吉爾塔斯的成長藥水組合包(第一週)",
+   "鍵": "bm月底吉爾塔斯的成長藥水組合包第一週",
+   "狀態": "卡住",
+   "輪次": "第1輪",
+   "類型": "BM",
+   "負責人": [
+    {
+     "名": "林雅婷",
+     "帳號": "yating",
+     "頭像": null
+    }
+   ],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/14",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  },
+  {
+   "iid": 15,
+   "標題": "BM_高級商店_共同_高級商店組合包等5種",
+   "鍵": "bm高級商店共同高級商店組合包等5種",
+   "狀態": "待測",
+   "輪次": "第1輪",
+   "類型": "BM",
+   "負責人": [],
+   "里程碑": "0826",
+   "網址": "https://gitlab.example.internal/peterchang/twlm-test-site/-/issues/15",
+   "更新時間": "2026-08-22 18:02",
+   "open": true,
+   "到期": null
+  }
+ ]
+}
