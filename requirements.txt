@@ -1,0 +1,5 @@
+openpyxl==3.1.5
+PyYAML==6.0.2
+# 讀 Google 試算表（Sheets API、Drive API）用的唯讀 service account 認證
+google-auth==2.57.1
+requests==2.33.1
