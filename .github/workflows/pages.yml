@@ -1,0 +1,48 @@
+# GitHub Pages 版（demo）：跟 .gitlab-ci.yml 做一樣的事——selftest → 用「範例資料」建頁面 → 發布。
+# 這裡永遠只用 data/*.sample.json（假數字、假名字）。真實的 progress.json 不進這個 repo。
+name: pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Taipei
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --quiet -r requirements.txt
+      - run: python scripts/selftest.py
+      - run: python scripts/build_site.py --data data/progress.sample.json --tasks data/tasks.sample.json --out public
+      - run: test -s public/index.html && grep -q "各展表進度" public/index.html
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
