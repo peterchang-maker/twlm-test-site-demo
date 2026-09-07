@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>天堂M 測試進度</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#EDF0F3; --surface:#FFFFFF; --surface-2:#F5F7F9;
+  --ink:#141C24; --body:#2C3742; --muted:#5C6B7A; --faint:#8A98A6;
+  --line:#D3DAE1; --line-soft:#E3E8ED;
+  --accent:#1F5C8B; --accent-soft:#E4EDF4;
+  --ok:#2F7A6F; --ok-soft:#E2EFEC;
+  --warn:#9C6F16; --warn-soft:#F4EDDC;
+  --risk:#A5443C; --risk-soft:#F5E5E3;
+  --display:"Noto Serif TC",Georgia,"Songti TC",serif;
+  --sans:"Noto Sans TC","Helvetica Neue",Arial,"PingFang TC",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#121A21; --surface:#1A242D; --surface-2:#202B35;
+  --ink:#E8EEF3; --body:#C4D0DA; --muted:#93A3B1; --faint:#6E7E8C;
+  --line:#2E3B47; --line-soft:#26313B;
+  --accent:#63A2CF; --accent-soft:#1C2E3D;
+  --ok:#5FB4A5; --ok-soft:#17302C;
+  --warn:#D3A445; --warn-soft:#302713;
+  --risk:#D97F76; --risk-soft:#33201E;}}
+:root[data-theme="dark"]{
+  --paper:#121A21; --surface:#1A242D; --surface-2:#202B35;
+  --ink:#E8EEF3; --body:#C4D0DA; --muted:#93A3B1; --faint:#6E7E8C;
+  --line:#2E3B47; --line-soft:#26313B;
+  --accent:#63A2CF; --accent-soft:#1C2E3D;
+  --ok:#5FB4A5; --ok-soft:#17302C;
+  --warn:#D3A445; --warn-soft:#302713;
+  --risk:#D97F76; --risk-soft:#33201E;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--body);font-family:var(--sans);
+  font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.w{max-width:1120px;margin:0 auto;padding:40px 24px 90px}
+/* header */
+header{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:26px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 10px}
+h1{font-family:var(--display);font-weight:700;color:var(--ink);font-size:clamp(1.7rem,3.4vw,2.3rem);
+  line-height:1.2;margin:0;letter-spacing:-.01em}
+.meta{display:flex;flex-wrap:wrap;gap:0 22px;margin:14px 0 0;font-family:var(--mono);
+  font-size:11.5px;color:var(--faint)}
+.meta b{color:var(--muted);font-weight:500}
+/* kpi */
+.kpi{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin:0 0 30px;
+  grid-template-columns:repeat(2,1fr)}
+@media(min-width:700px){.kpi{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1000px){.kpi{grid-template-columns:repeat(6,1fr)}}
+.kpi div{background:var(--surface);padding:15px 16px 16px}
+.kpi b{display:block;font-family:var(--display);font-size:1.85rem;line-height:1.1;color:var(--ink);
+  font-variant-numeric:tabular-nums}
+.kpi span{display:block;font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.45}
+.kpi .g b{color:var(--ok)} .kpi .r b{color:var(--risk)} .kpi .o b{color:var(--warn)}
+.kpi .zero b{color:var(--faint)}
+/* section */
+h2{font-family:var(--display);font-size:1.28rem;color:var(--ink);margin:36px 0 4px;font-weight:700}
+.deck{color:var(--muted);font-size:13.5px;margin:0 0 16px;max-width:66ch}
+/* risk */
+.risk{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--risk);
+  margin:0 0 16px}
+.risk.warn{border-left-color:var(--warn)}
+.risk>summary{cursor:pointer;padding:15px 44px 15px 20px;list-style:none;display:flex;gap:12px;
+  align-items:baseline;flex-wrap:wrap;position:relative}
+.risk>summary::-webkit-details-marker{display:none}
+.risk>summary::after{content:"▸";color:var(--faint);font-size:12px;position:absolute;
+  right:20px;top:17px;transition:transform .15s}
+.risk[open]>summary::after{transform:rotate(90deg)}
+.risk>summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.risk .n{font-family:var(--mono);font-size:1.05rem;font-weight:600;color:var(--risk);
+  font-variant-numeric:tabular-nums}
+.risk.warn .n{color:var(--warn)}
+.risk .t{color:var(--ink);font-weight:700;font-size:14.5px}
+.risk .d{color:var(--muted);font-size:12.5px;flex-basis:100%;line-height:1.6}
+.risk .inner{border-top:1px solid var(--line-soft);overflow-x:auto}
+/* tables */
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px}
+th,td{text-align:left;padding:9px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+thead th{background:var(--surface-2);color:var(--ink);font-weight:700;font-size:11.5px;
+  letter-spacing:.03em;white-space:nowrap;border-bottom:1px solid var(--line)}
+tbody tr:last-child td{border-bottom:none}
+td.m,th.m{font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums;
+  white-space:nowrap;text-align:right}
+td.name{color:var(--ink)}
+/* book */
+.book{background:var(--surface);border:1px solid var(--line);margin:0 0 14px}
+.book>summary{cursor:pointer;padding:15px 20px;list-style:none;display:grid;gap:6px 18px;
+  grid-template-columns:1fr;align-items:center}
+@media(min-width:760px){.book>summary{grid-template-columns:minmax(0,1fr) 132px 92px}}
+.book>summary::-webkit-details-marker{display:none}
+.book>summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.book .bt{color:var(--ink);font-weight:700;font-size:14.5px;line-height:1.45}
+.book .bs{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:2px}
+.book .inner{border-top:1px solid var(--line-soft);overflow-x:auto}
+.bar{height:7px;background:var(--line);overflow:hidden;position:relative}
+.bar i{display:block;height:100%;background:var(--ok)}
+.bar.none i{background:var(--faint)}
+.bar.part i{background:var(--accent)}
+.pct{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;
+  text-align:right}
+.pill{display:inline-block;font-family:var(--mono);font-size:10.5px;padding:1px 7px;
+  letter-spacing:.04em;white-space:nowrap;background:var(--accent-soft);color:var(--accent)}
+.pill.r{background:var(--risk-soft);color:var(--risk)}
+.pill.o{background:var(--warn-soft);color:var(--warn)}
+.pill.g{background:var(--ok-soft);color:var(--ok)}
+.empty{background:var(--surface);border:1px solid var(--line);padding:26px 22px;color:var(--muted);
+  font-size:14px}
+.stale{background:var(--warn-soft);border:1px solid var(--warn);border-left:5px solid var(--warn);
+  color:var(--ink);padding:14px 18px;margin:0 0 22px;font-size:14px;line-height:1.6}
+.stale b{color:var(--warn);font-family:var(--display);font-size:1.15rem;margin-right:8px}
+.stale.bad{background:var(--risk-soft);border-color:var(--risk)} .stale.bad b{color:var(--risk)}
+/* tasks */
+.who{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:12.5px;color:var(--ink)}
+.who img{width:18px;height:18px;border-radius:50%;vertical-align:middle}
+.who.none{color:var(--faint)}
+.pill.s待測{background:var(--surface-2);color:var(--muted)} .pill.s測試中{background:var(--accent-soft);color:var(--accent)}
+.pill.s卡住{background:var(--risk-soft);color:var(--risk)} .pill.s完成{background:var(--ok-soft);color:var(--ok)}
+.pill.s未標{background:var(--warn-soft);color:var(--warn)}
+.tasklink{font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;white-space:nowrap}
+.tasklink:hover{text-decoration:underline}
+.bs .who,.bs .pill,.bs .tasklink{vertical-align:middle}
+.tasks{background:var(--surface);border:1px solid var(--line);margin:0 0 14px}
+.tasks .hd{padding:13px 20px;border-bottom:1px solid var(--line-soft);display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.tasks .hd .nm{color:var(--ink);font-weight:700;font-size:14.5px}
+.tasks .hd .ct{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.tasks .inner{overflow-x:auto}
+.notice{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--warn);padding:13px 18px;
+  color:var(--body);font-size:13.5px;margin:0 0 16px;line-height:1.6}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 16px}
+.toolbar a{font-family:var(--mono);font-size:11.5px;color:var(--accent);text-decoration:none;border:1px solid var(--line);
+  background:var(--surface);padding:6px 11px}
+.toolbar a:hover{border-color:var(--accent)}
+footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:11px;color:var(--faint);line-height:1.85}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="w">
+  <header>
+    <p class="eyebrow" id="eyebrow">版本</p>
+    <h1 id="title">測試進度</h1>
+    <div class="meta" id="meta"></div>
+  </header>
+  <div id="stale"></div>
+  <div class="kpi" id="kpi"></div>
+  <div id="risks"></div>
+  <div id="tasks"></div>
+  <h2>各展表進度</h2>
+  <p class="deck">母數不含「X（不適用）」。百分比只算第一輪——後面幾輪是覆測，混進去會讓進度看起來比實際高。</p>
+  <div id="books"></div>
+  <footer id="foot"></footer>
+</div>
+<script id="payload" type="application/json">{"待填":true}</script>
+<script>
+(function(){
+  const D = JSON.parse(document.getElementById('payload').textContent);
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  if (D.待填) {
+    $('books').innerHTML = '<div class="empty">還沒有資料。這是樣板檔，'
+      + '正式頁面由 CI 執行 <code>build_site.py</code> 時把 progress.json 灌進來。</div>';
+    return;
+  }
+
+  $('eyebrow').textContent = D.版本 ? '版本 ' + D.版本 : '測試進度';
+  $('title').textContent = D.站台標題 || '測試進度';
+  document.title = (D.站台標題||'測試進度') + (D.版本 ? '　'+D.版本 : '');
+  $('meta').innerHTML =
+      '<span><b>統計於</b> ' + esc(D.產出時間) + '</span>'
+    + '<span><b>來源</b> ' + esc(D.來源) + '</span>'
+    + '<span><b>展表</b> ' + D.展表數 + ' 份</span>';
+
+  // 人工上傳模式：沒人推新資料，看板不會自己更新。超過一天就大聲講，不要讓舊數字看起來像今天的。
+  (function(){
+    const m = /^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/.exec(D.產出時間 || '');
+    if (!m) return;
+    const made = new Date(+m[1], m[2]-1, +m[3], +m[4], +m[5]);
+    const hours = (Date.now() - made.getTime()) / 36e5;
+    if (hours < 24) return;
+    const days = Math.floor(hours / 24), rest = Math.round(hours % 24);
+    $('stale').innerHTML = '<div class="stale' + (hours >= 72 ? ' bad' : '') + '"><b>' + days + ' 天' + (rest ? rest + ' 小時' : '') + '前的數字</b>'
+      + '這份看板統計於 ' + esc(D.產出時間) + '，之後沒有新的展表上傳。要看今天的進度，請把最新的展表 zip 拖到 更新看板.cmd 重推一次。</div>';
+  })();
+
+  const t = D.總計, R = D.風險;
+  const z = n => n ? '' : ' zero';
+  $('kpi').innerHTML = [
+    ['', D.展表數, '份展表'],
+    ['', D.母數, '母數（不含 X ' + t.X + '）'],
+    ['g', D.已測, '已測　·　' + D.進度 + '%'],
+    ['r'+z(t.N), t.N, '異常（判 N）'],
+    ['o'+z(R.要先問.length), R.要先問.length, '★ 要先問'],
+    ['r'+z(R.判N無備註.length), R.判N無備註.length, '判 N 但備註空白'],
+  ].map(([c,v,l]) => '<div class="'+c+'"><b>'+v+'</b><span>'+l+'</span></div>').join('');
+
+  // 風險區：沒有就不畫，不要留一塊空殼佔版面
+  const rows = (arr, cols) => '<table><thead><tr>'
+    + cols.map(c=>'<th'+(c[2]?' class="m"':'')+'>'+c[0]+'</th>').join('')
+    + '</tr></thead><tbody>' + arr.map(x=>'<tr>'
+    + cols.map(c=>'<td'+(c[2]?' class="m"':(c[1]==='名'?' class="name"':''))+'>'
+        + esc(x[c[1]]) + '</td>').join('') + '</tr>').join('') + '</tbody></table>';
+
+  const blocks = [];
+  if (R.判N無備註.length) blocks.push(['risk', R.判N無備註.length, '判了 N 但沒寫異常狀況備註',
+    '下游拿到只會退回來問。這幾列要補寫才送得出去。',
+    rows(R.判N無備註, [['展表','檔'],['分頁','分頁'],['列','列',1],['ItemID','id',1],['名稱','名']])]);
+  if (R.判定值異常.length) blocks.push(['risk', R.判定值異常.length, '判定欄填了認不得的值',
+    '只認 Y、N、X、未測試。其他值不會被算進母數，等於這幾列的進度是黑的。',
+    rows(R.判定值異常, [['展表','檔'],['分頁','分頁'],['列','列',1],['填了','值'],['名稱','名']])]);
+  if (R.要先問.length) blocks.push(['risk warn', R.要先問.length, '★ 企畫書沒寫清楚，要先問企劃',
+    '展表工具展開時標的。沒問到答案就測，測完可能整段作廢。',
+    rows(R.要先問, [['展表','檔'],['分頁','分頁'],['列','列',1],['名稱','名'],['說明','說明']])]);
+  const W = D.警告 || [];
+  if (W.length) blocks.push(['risk warn', W.length, '設定或掃描有狀況',
+    '掃描器在 log 裡喊的話，搬到這裡讓人看得到。多半是版本跟資料夾對不上、或有重複的展表。',
+    '<table><thead><tr><th>訊息</th></tr></thead><tbody>' + W.map(w => '<tr><td>' + esc(w) + '</td></tr>').join('') + '</tbody></table>']);
+  const M = R.自報不符 || [];
+  if (M.length) blocks.push(['risk warn', M.length, '看板算的跟展表自己統計的對不上',
+    '展表「測試進度」分頁的第一次測試 vs 看板掃出來的。多半是展表公式範圍沒拉到新增的列、或有分頁沒連進總表；也可能是模板改了。哪邊對，看了才知道。',
+    rows(M, [['展表','檔'],['欄位','欄位'],['展表自報','自報',1],['看板算的','看板',1]])]);
+
+  $('risks').innerHTML = blocks.length ? ('<h2>要處理的事</h2>'
+    + '<p class="deck">這一區有東西就代表有人要動作。空的時候整區不會出現。</p>'
+    + blocks.map(([cls,n,title,desc,tbl],i) =>
+      '<details class="'+cls+'"'+(i===0?' open':'')+'><summary>'
+      + '<span class="n">'+n+'</span><span class="t">'+title+'</span>'
+      + '<span class="d">'+desc+'</span></summary>'
+      + '<div class="inner">'+tbl+'</div></details>').join(''))
+    : '';
+
+  // ---- 任務（GitLab Issues）：一份展表一張 Issue，用正規化的標題對起來。
+  // task_key 要跟 scripts/fetch_issues.py 的 task_key() 一模一樣：去 QA- 前綴、NFKC、小寫、只留中英日韓與數字。
+  const TK = D.任務資料 || {錯誤: '這份 progress.json 是舊格式，沒有任務資料', 任務: []};
+  const taskKey = s => String(s||'').normalize('NFKC').replace(/^QA\s*-\s*/, '').toLowerCase()
+    .replace(/[^0-9a-z\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af]/g, '');
+  const byKey = {};
+  (TK.任務 || []).forEach(x => { if (!byKey[x.鍵] || x.open) byKey[x.鍵] = x; });
+  const bookKeys = new Set(D.展表.map(b => taskKey(b.標題)));
+  const whoHtml = t => !t ? '' : (t.負責人 && t.負責人.length
+    ? t.負責人.map(p => '<span class="who">' + (p.頭像 ? '<img src="'+esc(p.頭像)+'" alt="">' : '') + esc(p.名) + '</span>').join('　')
+    : '<span class="who none">未指派</span>');
+  const statusPill = t => '<span class="pill s'+esc(t.狀態)+'">'+esc(t.狀態)+'</span>';
+  const pills = t => !t ? '' : (t.輪次 ? '<span class="pill">'+esc(t.輪次)+'</span> ' : '') + statusPill(t);
+  const newIssueUrl = title => (TK.新任務網址 || '#') + '?issue[title]=' + encodeURIComponent(title);
+
+  // 任務指派區
+  (function(){
+    const parts = [];
+    if (TK.錯誤) {
+      parts.push('<div class="notice"><b>任務資料沒抓到：</b>' + esc(TK.錯誤) + '。指派請直接到 GitLab Issues 操作；看板下次 build 會再抓一次。</div>');
+    }
+    const tasks = (TK.任務 || []).filter(x => x.open || x.狀態 === '完成');
+    if (!tasks.length && !TK.錯誤) parts.push('<div class="notice">還沒有任何任務卡。新版本開始時跑 <code>scripts/sync_issues.py</code>，會把每份展表開成一張 Issue。</div>');
+    if (tasks.length) {
+      const groups = {};
+      tasks.forEach(x => {
+        const names = x.負責人 && x.負責人.length ? x.負責人.map(p => p.名) : ['（未指派）'];
+        names.forEach(n => { (groups[n] = groups[n] || []).push(x); });
+      });
+      const order = Object.keys(groups).sort((a,b) => (a==='（未指派）') - (b==='（未指派）') || a.localeCompare(b, 'zh-Hant'));
+      const progOf = x => { const b = D.展表.find(bk => taskKey(bk.標題) === x.鍵); return b ? (b.母數 ? Math.round(b.已測*100/b.母數) : 0) : null; };
+      parts.push(order.map(name => {
+        const list = groups[name];
+        const cnt = {}; list.forEach(x => cnt[x.狀態] = (cnt[x.狀態]||0) + 1);
+        return '<div class="tasks"><div class="hd"><span class="nm">' + esc(name) + '</span>'
+          + '<span class="ct">' + list.length + ' 份展表　·　' + Object.entries(cnt).map(([k,v]) => k + ' ' + v).join('　') + '</span></div>'
+          + '<div class="inner"><table><thead><tr><th>展表</th><th>類型</th><th>輪次</th><th>狀態</th><th class="m">看板進度</th><th>Issue</th></tr></thead><tbody>'
+          + list.map(x => { const p = progOf(x); return '<tr><td class="name">' + esc(x.標題) + (bookKeys.has(x.鍵) ? '' : ' <span class="pill o">看板上沒有這份展表</span>') + '</td>'
+            + '<td>' + esc(x.類型||'') + '</td><td>' + esc(x.輪次||'—') + '</td><td>' + statusPill(x) + '</td>'
+            + '<td class="m">' + (p === null ? '—' : p + '%') + '</td>'
+            + '<td><a class="tasklink" href="' + esc(x.網址) + '" target="_blank" rel="noopener">#' + x.iid + ' 指派／改狀態 →</a></td></tr>'; }).join('')
+          + '</tbody></table></div></div>';
+      }).join(''));
+    }
+    const missing = D.展表.filter(b => !byKey[taskKey(b.標題)]);
+    if (!TK.錯誤 && missing.length) parts.push('<div class="notice"><b>' + missing.length + ' 份展表還沒有任務卡：</b>'
+      + missing.map(b => '<a class="tasklink" href="' + newIssueUrl(b.標題) + '" target="_blank" rel="noopener">建卡「' + esc(b.標題) + '」</a>').join('　') + '</div>');
+    const bar = '<div class="toolbar">'
+      + (TK.看板網址 ? '<a href="' + esc(TK.看板網址) + '" target="_blank" rel="noopener">GitLab 看板（拖卡改狀態）→</a>' : '')
+      + (TK.任務清單網址 ? '<a href="' + esc(TK.任務清單網址) + '" target="_blank" rel="noopener">所有任務卡 →</a>' : '')
+      + (TK.新任務網址 ? '<a href="' + esc(TK.新任務網址) + '" target="_blank" rel="noopener">＋ 新任務</a>' : '') + '</div>';
+    $('tasks').innerHTML = '<h2>任務指派</h2><p class="deck">誰負責哪份展表、第幾輪、什麼狀態——這些住在 GitLab Issues，這裡只是讀出來排好。'
+      + '指派、改輪次、改狀態都在 Issue 上做（點右邊連結）；進度數字則是看板從展表算的。'
+      + (TK.抓取時間 ? '　任務資料抓於 ' + esc(TK.抓取時間) + '。' : '') + '</p>' + bar + parts.join('');
+  })();
+
+  const barCls = (d,m) => d===0 ? 'bar none' : (d<m ? 'bar part' : 'bar');
+  $('books').innerHTML = D.展表.map(b => {
+    const tsk = byKey[taskKey(b.標題)];
+    const pct = b.母數 ? Math.round(b.已測*100/b.母數) : 0;
+    const sheets = '<table><thead><tr><th>分頁</th><th class="m">母數</th><th class="m">已測</th>'
+      + '<th class="m">異常</th><th class="m">未測</th><th class="m">不適用</th>'
+      + '<th style="width:130px">進度</th></tr></thead><tbody>'
+      + b.分頁.map(s => {
+          const p = s.母數 ? Math.round(s.已測*100/s.母數) : 0;
+          return '<tr><td class="name">'+esc(s.分頁)+'</td>'
+            + '<td class="m">'+s.母數+'</td><td class="m">'+s.已測+'</td>'
+            + '<td class="m">'+(s.計.N ? '<span class="pill r">'+s.計.N+'</span>' : '0')+'</td>'
+            + '<td class="m">'+s.計.未測試+'</td><td class="m">'+s.計.X+'</td>'
+            + '<td><div class="'+barCls(s.已測,s.母數)+'"><i style="width:'+p+'%"></i></div>'
+            + '<div class="pct">'+p+'%</div></td></tr>';
+        }).join('') + '</tbody></table>';
+    return '<details class="book" open><summary>'
+      + '<div><div class="bt">'+esc(b.標題)+'</div>'
+      + '<div class="bs">'+b.分頁.length+' 個分頁　·　更新於 '+esc(b.更新時間)
+      + (b.計.N ? '　·　<span style="color:var(--risk)">異常 '+b.計.N+'</span>' : '')
+      + (tsk ? '　·　' + whoHtml(tsk) + '　' + pills(tsk) + '　<a class="tasklink" href="' + esc(tsk.網址) + '" target="_blank" rel="noopener">#' + tsk.iid + ' →</a>'
+             : (TK.錯誤 ? '' : '　·　<a class="tasklink" href="' + newIssueUrl(b.標題) + '" target="_blank" rel="noopener">尚無任務卡，建一張 →</a>'))
+      + '</div></div>'
+      + '<div class="'+barCls(b.已測,b.母數)+'"><i style="width:'+pct+'%"></i></div>'
+      + '<div class="pct">'+b.已測+' / '+b.母數+'　'+pct+'%</div>'
+      + '</summary><div class="inner">'+sheets+'</div></details>';
+  }).join('');
+
+  $('foot').innerHTML = '天堂M 測試進度看板　·　階段 0 ＋ 階段 2（任務指派）<br>'
+    + '進度由展表算出、任務由 GitLab Issues 讀出，都不是人工維護的。數字對不上請先看資料來源那一行。<br>'
+    + '統計於 ' + esc(D.產出時間) + '　·　母數不含 X（不適用）　·　百分比只算第一輪';
+})();
+</script>
+</body>
+</html>
